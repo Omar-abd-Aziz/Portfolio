@@ -1,0 +1,826 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+.hide
+{
+    display: block !important;
+}
+
+:root
+{
+    --main-color: #10cab7;
+    --two-color: black;
+}
+
+
+.MainColor
+{
+    font-size: 25px;
+    color: var(--main-color) !important;
+}
+
+
+
+.btn-group
+{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-align: center !important;
+    padding: 0;
+    margin: 0 0 15px;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+
+
+
+
+
+#btnup 
+{
+  border: none;
+  padding: 5px;
+  border-radius: 30px;
+  font-size: 30px;
+  cursor: pointer;
+  background: transparent;
+  color: white;
+  position: fixed;
+  right: 1%;
+  top: 90%;
+  display: none;
+  z-index: 1;
+  user-select: none;
+}
+
+
+
+
+/* start icon for services code */
+
+.icon-1
+{
+    background: url("https://img.icons8.com/external-prettycons-lineal-color-prettycons/49/000000/external-portfolio-user-interface-vol-3-prettycons-lineal-color-prettycons-4.png") !important;
+    width: 50px !important;
+    background-size: cover !important;
+}
+
+.icon-2
+{
+    background: url("https://img.icons8.com/nolan/64/medical-mobile-app.png") !important;
+    width: 50px !important;
+    background-size: cover !important;
+}
+
+.icon-3
+{
+    background: url("https://img.icons8.com/dusk/64/000000/idea.png") !important;
+    width: 50px !important;
+    background-size: cover !important;
+}
+
+
+/* end icon for services code */
+
+
+
+
+
+
+
+/* start computer view */
+
+@media (min-width: 769px) {
+
+    #main
+    {
+        width: 100%;
+    }
+
+    /* start navBar */
+
+    #navBar-dad
+    {
+        width: 100%;
+        background: white;
+    }
+
+
+    #navBar
+    {
+        width: 80%;
+        margin: auto;
+        background: white;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #logo
+    {
+        width: 100px;
+        height: 55px;
+        background: url(https://firebasestorage.googleapis.com/v0/b/my-app-25838.appspot.com/o/1660774865805-El7alwany%20Logo%20sm.png?alt=media&token=c5772438-da50-41f9-b3fb-fa749589c266);
+        background-size: cover;
+        margin: 15px;
+        border-radius: 20px;
+    }
+
+    #nav-menu-btn
+    {
+        width: 40px;
+        height: 40px;
+        background: url(images/menu-burger.png);
+        background-size: cover;
+        margin: 25px;
+        cursor: pointer;
+
+        position: relative;
+    }
+
+
+    #nav-menu
+    {
+        width: 150px;
+        height: 210px;
+        position: absolute;
+        top: 63px;
+        right: calc(10% + 25px);
+        background: black;
+        z-index: 1;
+        border-radius: 10px;
+
+        display: none;
+    }
+
+    #nav-menu .navBtn
+    {
+        width: 80%;
+        height: 30px;
+        margin: 10px auto;
+        background: white;
+        border-radius: 10px;
+        cursor: pointer;
+
+        position: relative;
+    }
+
+    #nav-menu .navBtn p
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        
+        padding: 4px 20px;
+        margin: auto;
+        text-align: center;
+        color: black;
+        font-weight: 800;
+        font-size: 20px;
+    }
+
+    /* end navBar */
+
+    /* start main-page */
+
+    #mainPage-dad
+    {
+        width: 100%;
+        height: calc(100vh - 50px);
+        background: url(images/1.jpg);
+        background-size: cover;
+    }
+
+    #mainPage
+    {
+        width: calc(80% - 20px);
+        margin: auto;
+        background: transparent;
+        text-align: center;
+
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+    #mainPage h1
+    {
+        font-size: 60px;
+        color: var(--two-color);
+    }
+
+    #mainPage p
+    {
+        width: 80%;
+        margin: auto;
+        font-size: 30px;
+        color: rgb(99, 96, 96);
+        font-weight: 700;
+    }
+
+    #mainPage span
+    {
+        font-size: 35px;
+        color: yellow;
+        text-shadow: 2px 2px 3px black;
+        font-weight: 700;
+    }
+
+    /* end main-page */
+
+    /* start ServicesPage */
+
+    #morePage-dad
+    {
+        width: 100%;
+        background: #F6F6F6;
+        background-size: cover;
+    }
+
+    #morePage
+    {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+    
+    #cards-dad
+    {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px,1fr)) !important;
+      grid-gap: 20px;
+    }
+
+
+    .card1
+    {
+        width: 90%;
+        max-width: 300px;
+        margin: auto;
+        padding: 35px 15px;
+    }
+
+    .card1 #card-icon
+    {
+        width: 80px;
+        height: 50px;
+        margin: auto;
+        background: url(images/logo.png);
+        background-size: cover;
+    }
+
+    .card1 h2
+    {
+        font-size: 25px;
+    }
+
+    .card1 p
+    {
+        font-size: 16px;
+    }
+
+    /* end morePage */
+
+    /* start aboutPage */
+
+    #aboutPage-dad
+    {
+        width: 100%;
+        background: white;
+        background-size: cover;
+    }
+
+    #aboutPage
+    {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+
+    #aboutPage #me-div
+    {
+        width: 200px;
+        height: 200px;
+        background: url(images/me.jpg);
+        background-size: cover;
+        margin: 20px auto;
+        border-radius: 50%;
+        border: 2px solid black;
+    }
+
+
+    #aboutPage > #aboutMe
+    {
+        max-width: 55%;
+        margin: auto;
+    }
+
+
+
+
+    #know
+    {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 45px;
+        color: #8e8a8a8f;
+    }
+
+    /* end aboutPage */
+
+    /* start portflioPage */
+
+    #portflioPage-dad
+    {
+        width: 100%;
+        background: #F6F6F6;
+        background-size: cover;
+    }
+
+    #portflioPage
+    {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+
+    #projects-card
+    {
+        background: white;
+        width: 90%;
+        max-width: 300px;
+        margin: 20px auto;
+        border: 3px solid black;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    #projects-card img
+    {
+        width: 100%;
+        border-radius: 0px 0px;
+        height: fit-content;
+        max-height: 300px;
+    	min-height: 250px;
+    }
+
+    #projects-card #card-div
+    {
+        padding: 15px;
+        text-align: start;
+    }
+
+    #projects-card #card-div a
+    {
+        color: var(--main-color);
+        text-decoration: none;
+        font-size: 1.5em;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #projects-card #card-div p
+    {
+        margin: 10px 0 0 0;
+    }
+
+    /* end portflioPage */
+    
+    /* start contactPage */
+    
+    #contactPage-dad
+    {
+      width: 100%;
+      background: white;
+      background-size: cover;
+    }
+
+    #contact
+    {
+      width: 80%;
+      margin: auto;
+      text-align: center;
+    }
+    
+    #contact-div h2
+    {
+      color: #2c4755;
+      font-size: 37px;
+    }
+    
+    #contact-div p
+    {
+      
+      font-weight: bold;
+      font-size: 45px;
+      color: var(--main-color);
+    }
+    
+    /* end contactPage */
+    
+    /* start footerpage*/
+    
+    #footer
+    {
+      background: #2c4755;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 25px;
+      font-weight: bold;
+      color: white;
+    }
+    
+    #footer #footer-name
+    {
+      color: var(--main-color);
+    }
+    
+    /* end footerpage */
+
+}
+
+
+/* end computer view */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* start mobile view */
+
+@media (max-width: 768px) {
+
+    #main
+    {
+        width: 100%;
+    }
+
+    /* start navBar */
+
+    #navBar-dad
+    {
+        width: 100%;
+        background: white;
+    }
+
+
+    #navBar
+    {
+        width: 80%;
+        margin: auto;
+        background: white;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #logo
+    {
+        width: 80px;
+        height: 50px;
+        background: url(https://firebasestorage.googleapis.com/v0/b/my-app-25838.appspot.com/o/1660774865805-El7alwany%20Logo%20sm.png?alt=media&token=c5772438-da50-41f9-b3fb-fa749589c266);
+        background-size: cover;
+        margin: 15px;
+        border-radius: 20px;
+    }
+
+    #nav-menu-btn
+    {
+        width: 30px;
+        height: 30px;
+        background: url(images/menu-burger.png);
+        background-size: cover;
+        margin: 25px;
+        cursor: pointer;
+
+        position: relative;
+    }
+
+
+    #nav-menu
+    {
+        width: 150px;
+        height: 210px;
+        position: absolute;
+        top: 63px;
+        right: calc(10% + 25px);
+        background: black;
+        z-index: 1;
+        border-radius: 10px;
+
+        display: none;
+    }
+
+    #nav-menu .navBtn
+    {
+        width: 80%;
+        height: 30px;
+        margin: 10px auto;
+        background: white;
+        border-radius: 10px;
+        cursor: pointer;
+
+        position: relative;
+    }
+
+    #nav-menu .navBtn p
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        
+        padding: 4px 20px;
+        margin: auto;
+        text-align: center;
+        color: black;
+        font-weight: 800;
+        font-size: 20px;
+    }
+
+    /* end navBar */
+
+    /* start main-page */
+
+    #mainPage-dad
+    {
+        width: 100%;
+        height: calc(100vh - 50px);
+        background: url(images/1.jpg);
+        background-size: cover;
+    }
+
+    #mainPage
+    {
+        width: calc(80% - 20px);
+        margin: auto;
+        background: transparent;
+        text-align: center;
+
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+    #mainPage h1
+    {
+        font-size: 35px;
+        color: var(--two-color);
+    }
+
+    #mainPage p
+    {
+        width: 80%;
+        margin: auto;
+        font-size: 16px;
+        color: rgb(99, 96, 96);
+        font-weight: 700;
+    }
+
+    #mainPage span
+    {
+        font-size: 18px;
+        color: yellow;
+        text-shadow: 2px 2px 3px black;
+        font-weight: 700;
+    }
+
+    /* end main-page */
+
+    /* start morePage */
+
+    #morePage-dad
+    {
+        width: 100%;
+        background: #F6F6F6;
+        background-size: cover;
+    }
+
+    #morePage
+    {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+
+
+    #cards-dad
+    {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+      grid-gap: 20px;
+    }
+
+
+    .card1
+    {
+        width: 90%;
+        margin: auto;
+        padding: 35px 15px;
+    }
+
+    .card1 #card-icon
+    {
+        width: 80px;
+        height: 50px;
+        margin: auto;
+        background: url(images/logo.png);
+        background-size: cover;
+    }
+
+    .card1 h2
+    {
+        font-size: 25px;
+    }
+
+    .card1 p
+    {
+        font-size: 16px;
+    }
+
+    /* end morePage */
+
+    /* start aboutPage */
+
+    #aboutPage-dad
+    {
+        width: 100%;
+        background: white;
+        background-size: cover;
+    }
+
+    #aboutPage
+    {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+
+    #aboutPage #me-div
+    {
+        width: 200px;
+        height: 200px;
+        background: url(images/me.jpg);
+        background-size: cover;
+        margin: 20px auto;
+        border-radius: 50%;
+        border: 2px solid black;
+    }
+
+
+    #know
+    {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 45px;
+        color: #8e8a8a8f;
+    }
+
+    /* end aboutPage */
+
+    /* start portflioPage */
+
+    #portflioPage-dad
+    {
+        width: 100%;
+        background: #F6F6F6;
+        background-size: cover;
+    }
+
+    #portflioPage
+    {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+
+    #projects-card
+    {
+        background: white;
+        width: 90%;
+        max-width: 300px;
+        margin: 20px auto;
+        border: 3px solid black;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    #projects-card img
+    {
+        width: 100%;
+        border-radius: 0px 0px;
+    }
+
+    #projects-card #card-div
+    {
+        padding: 15px;
+        text-align: start;
+    }
+
+    #projects-card #card-div a
+    {
+        color: var(--main-color);
+        text-decoration: none;
+        font-size: 1.5em;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #projects-card #card-div p
+    {
+        margin: 10px 0 0 0;
+    }
+
+    /* end portflioPage */
+    
+    /* start contactPage */
+    
+    #contactPage-dad
+    {
+      width: 100%;
+      background: white;
+      background-size: cover;
+    }
+
+    #contact
+    {
+      width: 80%;
+      margin: auto;
+      text-align: center;
+    }
+    
+    #contact-div h2
+    {
+      color: #2c4755;
+      font-size: 18px;
+    }
+    
+    #contact-div p
+    {
+      
+      font-weight: bold;
+      font-size: 22px;
+      color: var(--main-color);
+    }
+    
+    /* end contactPage */
+    
+    /* start footerpage*/
+    
+    #footer
+    {
+      background: #2c4755;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 15px;
+      font-weight: bold;
+      color: white;
+    }
+    
+    #footer #footer-name
+    {
+      color: var(--main-color);
+    }
+    
+    /* end footerpage */
+
+}
+
+
+
+
+
+
+/* end mobile view */
+

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="add-card.css">
+    <link rel="stylesheet" href="scss.css">
+    <!-- start icon -->
+    <link rel="shortcut icon" href="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/000000/external-dashboard-marketing-technology-flaticons-lineal-color-flat-icons-2.png">
+    <!-- end icon -->
+  </head>
+  <body>
+    
+    
+    
+    <!-- start main div for add card -->
+    <div id="main">
+
+        <input type="text" id="nameCard" placeholder="Name" class="input">
+        
+        <input type="text" id="linkProject" placeholder="Link Of Project" class="input">
+            
+        <textarea name="comments" id="textCard" placeholder="Text About Project"></textarea>
+
+        <label for="photo" id="photoLabel">Img</label>
+        <input type="file" id="photo" style="display: none;"/>
+        <br>
+        <br>
+        <button id="addCard">Add Card</button>
+  
+    </div>
+    <!-- end main div for add card -->
+
+
+
+    <br><br><br><br>
+
+    <!-- Start Div For Cards -->
+    <div id="dadOfCards" class="grid">
+
+    </div>
+    <!-- End Div For Cards -->
+
+
+
+  </body>
+
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+
+  <script type="module">
+
+
+/*start firebase*///////////////////////////////////////////////////////////
+
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js';
+    import { getFirestore, collection, getDocs,setDoc,doc } from 'https://www.gstatic.com/firebasejs/9.8.2/firebase-firestore.js';
+
+
+    var firebaseConfig = {
+    apiKey: "AIzaSyBBfQ1pFA77crXCBkkLRilcNZdBmf0YFQA",
+    authDomain: "my-app-25838.firebaseapp.com",
+    databaseURL: "https://my-app-25838-default-rtdb.firebaseio.com",
+    projectId: "my-app-25838",
+    storageBucket: "my-app-25838.appspot.com",
+    messagingSenderId: "127559623465",
+    appId: "1:127559623465:web:c2d0de972a931187008d38",
+    measurementId: "G-3E1S2T8D20"
+    };
+
+
+firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
+
+let X;
+
+async function getCit(db,X) {
+  const citiesCol = collection(db,`${X}`);
+  const citySnapshot = await getDocs(citiesCol);
+  const cityList = citySnapshot.docs.map(doc => doc.data());
+  
+  return cityList;
+}
+
+
+
+/*end firebase*/////////////////////////////////////////////////////////////
+
+
+
+
+
+
+/////////////////////////////////////////* Start Main Function *////////////////////////////////////////////
+
+let addCard = document.querySelector("#addCard")
+
+
+addCard.addEventListener("click",()=>{
+
+  if
+  (
+  document.querySelector("#nameCard").value!=""&&
+  document.querySelector("#linkProject").value!=""&&
+  document.querySelector("#textCard").value!=""
+  )
+  {
+    uploadImage()
+  } else {
+    alert("must add Name,Link,Text And Photo")
+  }
+
+
+
+})
+
+
+
+
+
+
+
+async function save(url)
+{
+
+
+let nameCard = document.querySelector("#nameCard").value
+let linkProject = document.querySelector("#linkProject").value
+let textCard = document.querySelector("#textCard").value
+
+console.log(nameCard)
+console.log(linkProject)
+console.log(textCard)
+
+
+
+//////////////////////////////
+
+document.querySelector("#nameCard").value=''
+document.querySelector("#linkProject").value=''
+document.querySelector("#textCard").value=''
+
+//////////////////////////////
+
+
+
+/*start get*///////////////////////////////////////////
+let H;
+let G;
+
+getCit(db, 'Cards').then(async (e) => {
+
+  G = e;
+
+  H = G[0].cardsDad;
+
+  H +=`
+
+  
+<div id="projects-card">
+    <img src="${url}">
+    <div id="card-div">
+        <a href="${linkProject}">${nameCard}</a>
+        <p>${textCard}</p>
+        <button id="btnForDel" style="display: none;">Delet</button>
+    </div>
+</div>
+  
+  
+  `;
+
+
+/*start post*/
+setDoc(doc(db, "Cards", 'dad'), {
+    cardsDad: `${H}`,
+});
+/*end post*/
+
+getCards()
+
+})
+
+/*end get*///////////////////////////////////////////
+
+}
+
+
+
+/////////////////////////////////////////* End Main Function *////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////* Start Upload Function *////////////////////////////////////////////
+
+
+    async function uploadImage() {
+
+      console.log("ok")
+    
+      const ref = firebase.storage().ref();
+      const file = document.querySelector("#photo").files[0];
+      const name = +new Date() + "-" + file.name;
+      const metadata = {
+        contentType: file.type
+      };
+      const task = ref.child(name).put(file, metadata);
+      task
+        .then(async snapshot => snapshot.ref.getDownloadURL())
+        .then(async url => {
+
+          console.log(url);
+
+          save(url);
+
+        })
+        .catch(console.error);
+    }
+
+
+
+
+
+
+
+/////////////////////////////////////////* End Upload Function *////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////* Start Get and Save Function *////////////////////////////////////////////
+
+
+
+
+
+let G,H;
+
+function getCards()
+  {
+
+  getCit(db, 'Cards').then(async (e) => {
+
+  G = e;
+
+  H = G[0].cardsDad;
+
+  document.querySelector("#dadOfCards").innerHTML = H
+
+
+  let x = Array.from(document.querySelectorAll("#btnForDel")).forEach(button=>button.addEventListener("click",()=>{
+
+    let S =event.srcElement.parentNode.parentNode
+
+    S.parentNode.removeChild(S)
+
+
+    /*save*/
+
+    let dad = document.querySelector("#dadOfCards").innerHTML
+
+    
+    setDoc(doc(db, "Cards", 'dad'), {
+    cardsDad: `${dad}`,
+    });
+    
+
+    /*save*/
+
+
+  }))
+
+
+  })
+  }
+
+  getCards()
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////* End Get and Save Function *////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</html>
